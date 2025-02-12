@@ -1,5 +1,4 @@
 
-s ="3[z]2[2[y]pq4[2[jk]e1[f]]]ef"
 
 # the thought is that:
 #  store all the previous string in the stack,
@@ -21,8 +20,17 @@ class Solution:
             elif char =="]":
                 #  means one compression is end, and we need to decode it
                 previous_string, repeat_num = stack.pop()
-                current_string =previous_string + current_string*current_num
+                current_string =previous_string + current_string*repeat_num
             else:
                 # means only the char
                 current_string +=char
+            print(stack, current_string)
         return current_string
+    
+
+s = "3[a]2[bc]"
+
+solution = Solution()
+current_string = solution.decodeString(s)
+print(current_string)  # expect "aaabcbc"
+
